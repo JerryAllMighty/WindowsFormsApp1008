@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1008
 {
+
     public partial class 타자연습 : Form
     {
+        List<string> sentence = new List<string>();
+       
         public 타자연습()
         {
             InitializeComponent();
@@ -21,7 +24,11 @@ namespace WindowsFormsApp1008
         {
             label1.Text = "200";   //속성에 값을 준다 이러면 셋에 간다
             progressBar1.Value = 100;
-            timer1.Interval = 300;
+            sentence.Add("무궁화 꽃이 피었습니다.");
+            sentence.Add("진달래 꽃.");
+            sentence.Add(">A<");
+            sentence.Add("무궁화 꽃이 피었습니다.");
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -54,7 +61,7 @@ namespace WindowsFormsApp1008
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
             timer1.Start();
         }
 
@@ -73,11 +80,19 @@ namespace WindowsFormsApp1008
                 timer1.Stop();
                 //정답체크
                 //if(label3.Text == textBox1.Text)
-                    //점수 올리기
+                //점수 올리기
                 //else 
-                        //기회를 빼준다 문제를 다시 출제한다
+                //기회를 빼준다 문제를 다시 출제한다
 
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+            int num = rand.Next(0, 5);
+
+            label3.Text = sentence[num].ToString();
         }
     }
 }
